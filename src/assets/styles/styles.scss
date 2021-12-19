@@ -1,0 +1,123 @@
+@import 'normalize';
+@import 'variables';
+@import 'colors';
+@import 'mixins';
+@import 'root';
+@import 'grid';
+@import 'utilities';
+@import 'typography';
+@import 'buttons';
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  margin: 2.5rem 0;
+
+  li {
+    margin: 2rem 0;
+  }
+}
+
+.slide {
+//  background: url('assets/images/safe-travels.jpg') 0 0 no-repeat;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 11rem;
+}
+
+.branding {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: $primary;
+  font-weight: 700;
+  font-size: 2.4rem;
+
+  .logo {
+    display: inline-flex;
+    width: 5.2rem;
+    height: 5.2rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-left: 3rem;
+  }
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 1.8rem;
+
+  &__item {
+    margin: 0 0 0 2rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $primary;
+
+    &.router-link-active {
+      font-weight: 700;
+    }
+  }
+}
+
+.explore {
+  &__image {
+    position: relative;
+    margin-bottom: 4rem;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 100%;
+      border: 1px solid green;
+    }
+
+    > img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+.footer {
+  background: $gray1;
+  padding: 7rem 0;
+  font-size: 1.6rem;
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $primary;
+  }
+}

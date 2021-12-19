@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
   {
@@ -17,14 +17,14 @@ const routes = [
     component: () => import('@/views/ClaimReportView.vue'),
   },
   {
-    path: '/about-us',
+    path: '/contact',
     name: 'ContactView',
     component: () => import('@/views/ContactView.vue'),
   },
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(),
   routes,
 });
 

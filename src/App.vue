@@ -1,9 +1,23 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Insurance</router-link> |
-    <router-link to="/about-us">About us</router-link> |
-    <router-link to="/claim-report">Claim report</router-link> |
-    <router-link to="/contact">Contact</router-link>
-  </div>
+  <header-navigation></header-navigation>
   <router-view/>
+  <page-footer></page-footer>
 </template>
+
+<script>
+  import { defineComponent } from 'vue';
+  import HeaderNavigation from '@/components/HeaderNavigation';
+  import PageFooter from '@/components/PageFooter';
+
+  export default defineComponent({
+    name: 'App',
+    components: {
+      HeaderNavigation,
+      PageFooter,
+    },
+    props: {},
+
+    setup(props) {
+    },
+  });
+</script>

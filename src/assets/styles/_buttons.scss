@@ -1,0 +1,20 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  height: 4.8rem;
+  font-size: 1.6rem;
+  border: 1px solid $primary;
+  border-radius: 0.4rem;
+  color: red;
+  padding: 0 60px;
+
+  &--primary {
+    color: $background;
+    background: $primary;
+  }
+
+  &--secondary {
+    color: $primary;
+    background: $background;
+  }
+}
