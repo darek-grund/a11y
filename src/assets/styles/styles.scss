@@ -121,3 +121,43 @@ ul {
     color: $primary;
   }
 }
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  font-size: 1.6rem;
+
+  &__tab {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 1rem;
+    height: 4rem;
+    background: $gray2;
+    padding: 0 4.5rem;
+
+    &--active {
+      background: $primary;
+      color: $background;
+    }
+  }
+}
+
+.form {
+  font-size: 1.6rem;
+
+  &__label {
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  &__input {
+    height: 4.5rem;
+    width: 100%;
+    border: 1px solid $primary;
+    padding: 0 2rem;
+  }
+}
