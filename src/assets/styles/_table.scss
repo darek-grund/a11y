@@ -1,0 +1,22 @@
+.table {
+  width: 100%;
+  border-spacing: 0 2rem;
+
+  &__row {
+    > * {
+      //padding: 0.5rem 2rem;
+    }
+  }
+
+  &__header {
+    text-align: left;
+  }
+
+  &__price {
+    font-weight: 700;
+  }
+  
+  &__actions {
+    text-align: right;
+  }
+}

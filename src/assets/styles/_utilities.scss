@@ -10,6 +10,19 @@
   margin-left: 2rem;
 }
 
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 4rem;
+}
+
 .mb-10 {
   margin-bottom: 10rem;
+}
+
+.justify-space-between {
+  display: flex;
+  justify-content: space-between;
 }
