@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-5">
-        <img src="@/assets/images/internal-visitors.jpg" />
+        <img src="@/assets/images/internal-visitors.jpg" alt="" />
       </div>
       <div class="col-md-2"></div>
       <div class="col-md-5">
@@ -25,7 +25,7 @@
       </div>
       <div class="col-md-2"></div>
       <div class="col-md-5">
-        <img src="@/assets/images/safe-travels.jpg" />
+        <img src="@/assets/images/safe-travels.jpg" alt="" />
       </div>
     </div>
   </div>

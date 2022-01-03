@@ -5,7 +5,7 @@
         <header class="header">
           <router-link to="/" class="branding">
             The Insurer
-            <img src="@/assets/images/logo.jpg" class="logo" />
+            <img src="@/assets/images/logo.jpg" class="logo" alt="The Insurer Home" />
           </router-link>
 
           <nav>

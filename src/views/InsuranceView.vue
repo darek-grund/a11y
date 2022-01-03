@@ -14,7 +14,7 @@
       <div class="col-md-3">
         <div class="explore">
           <div class="explore__image">
-            <img src="@/assets/images/explore1.jpg" />
+            <img src="@/assets/images/explore1.jpg" alt="" />
           </div>
           <p class="explore__title">Renting Vacation Homes</p>
         </div>
@@ -23,7 +23,7 @@
       <div class="col-md-3">
         <div class="explore">
           <div class="explore__image">
-            <img src="@/assets/images/explore2.jpg" />
+            <img src="@/assets/images/explore2.jpg" alt="" />
           </div>
           <p class="explore__title">Trends &amp; Predictions</p>
         </div>
@@ -32,7 +32,7 @@
       <div class="col-md-3">
         <div class="explore">
           <div class="explore__image">
-            <img src="@/assets/images/explore3.jpg" />
+            <img src="@/assets/images/explore3.jpg" alt="" />
           </div>
           <p class="explore__title">Popular Travel Destinations for 2021</p>
         </div>
@@ -41,7 +41,7 @@
       <div class="col-md-3">
         <div class="explore">
           <div class="explore__image">
-            <img src="@/assets/images/explore4.jpg" />
+            <img src="@/assets/images/explore4.jpg" alt="" />
           </div>
           <p class="explore__title">Travel Gear for Safe Travels in 2021</p>
         </div>
@@ -54,7 +54,7 @@
       <div class="row">
         <div class="col-md-12 text-center">
           <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum debitis, earum ex laborum sed velit!"</p>
-          <img src="@/assets/images/duck.jpg" class="avatar" />
+          <img src="@/assets/images/duck.jpg" class="avatar" alt="" />
           <p class="description">Donald Duck, CEO of Disney</p>
         </div>
       </div>
