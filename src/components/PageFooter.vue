@@ -13,16 +13,16 @@
           <h3 class="title">About Us</h3>
           <ul>
             <li>
-              <a href="" class="footer__link">Newsroom</a>
+              <router-link to="/newsroom" class="footer__link">Newsroom</router-link>
             </li>
             <li>
-              <a href="" class="footer__link">Careers</a>
+              <router-link to="/careers" class="footer__link">Careers</router-link>
             </li>
             <li>
-              <a href="" class="footer__link">Our story</a>
+              <router-link to="/our-story" class="footer__link">Our story</router-link>
             </li>
             <li>
-              <a href="" class="footer__link">Customer Stories</a>
+              <router-link to="/customer-stories" class="footer__link">Customer Stories</router-link>
             </li>
           </ul>
         </div>
@@ -31,19 +31,10 @@
           <h3 class="title">Products</h3>
           <ul>
             <li>
-              <a href="" class="footer__link">Vacation / Holiday</a>
+              <router-link to="/vacation-holiday" class="footer__link">Vacation / Holiday</router-link>
             </li>
             <li>
-              <a href="" class="footer__link">Student / Scholar</a>
-            </li>
-            <li>
-              <a href="" class="footer__link">Mission</a>
-            </li>
-            <li>
-              <a href="" class="footer__link">Marine Captain / Crew</a>
-            </li>
-            <li>
-              <a href="" class="footer__link">Employer / Business Travel</a>
+              <router-link to="/student-scholar" class="footer__link">Student / Scholar</router-link>
             </li>
           </ul>
         </div>
@@ -52,16 +43,10 @@
           <h3 class="title">Members</h3>
           <ul>
             <li>
-              <a href="" class="footer__link">Forms Library</a>
+              <router-link to="/forms-library" class="footer__link">Forms Library</router-link>
             </li>
             <li>
-              <a href="" class="footer__link">Find a Doctor</a>
-            </li>
-            <li>
-              <a href="" class="footer__link">Renew Policy</a>
-            </li>
-            <li>
-              <a href="" class="footer__link">Claims Center</a>
+              <router-link to="/find-doctor" class="footer__link">Find a Doctor</router-link>
             </li>
           </ul>
         </div>

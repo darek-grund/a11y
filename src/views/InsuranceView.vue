@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
-        <h2>Exlpore Our Travel Topics</h2>
+        <h2>Explore Our Travel Topics</h2>
       </div>
 
     </div>
@@ -69,8 +69,8 @@
       </div>
 
       <div class="col-md-6 text-right">
-        <button class="button button--secondary">Call Us</button>
-        <button class="button button--primary ml-2">Send a Message</button>
+        <a href="tel:123-456-7890" class="button button--secondary">Call Us</a>
+        <router-link to="/about-us" class="button button--primary ml-2">Send a Message</router-link>
       </div>
     </div>
   </div>
@@ -79,6 +79,7 @@
 
 <script>
   import { defineComponent } from 'vue';
+  import { useRouter } from 'vue-router';
   import HomePromo from '@/components/HomePromo';
   import FeatureList from '@/components/FeatureList';
 
@@ -91,6 +92,8 @@
     props: {},
 
     setup(props) {
+      const router = useRouter();
+      document.title = router.currentRoute.value.meta.title;
     },
   });
 </script>

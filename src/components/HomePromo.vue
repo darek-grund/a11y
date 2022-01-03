@@ -6,7 +6,7 @@
         <div class="col-md-6 text-center">
           <h1>Travel Insurance</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cumque doloremque doloribus enim error nam, nisi perspiciatis reprehenderit sit suscipit!</p>
-          <button class="button button--primary">Order now</button>
+          <router-link to="/claim-report" class="button button--primary">Order now</router-link>
         </div>
       </div>
     </div>

@@ -60,6 +60,7 @@
 
 <script>
   import { defineComponent } from 'vue';
+  import { useRouter } from 'vue-router'
 
   export default defineComponent({
     name: 'ClaimReportView',
@@ -67,6 +68,8 @@
     props: {},
 
     setup(props) {
+      const router = useRouter();
+      document.title = router.currentRoute.value.meta.title;
     },
   });
 </script>
