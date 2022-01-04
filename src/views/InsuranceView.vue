@@ -25,7 +25,7 @@
           <div class="explore__image">
             <img src="@/assets/images/explore2.jpg" alt="" />
           </div>
-          <p class="explore__title">Trends &amp; Predictions</p>
+          <p class="explore__title">Trends &amp;amp; Predictions</p>
         </div>
       </div>
 

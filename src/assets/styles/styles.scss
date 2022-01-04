@@ -138,6 +138,7 @@ ul {
     height: 4rem;
     background: $gray2;
     padding: 0 4.5rem;
+    border: none;
 
     &--active {
       background: $primary;
@@ -166,6 +167,17 @@ ul {
   &__textarea {
     padding: 2rem;
     height: 20rem;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 2.5rem 0;
+
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
   }
 }
 
@@ -198,13 +210,9 @@ ul {
   }
 
   &__close {
-    &::before {
-      content: 'X';
-      font-size: 3rem;
-      font-family: sans-serif;
-      line-height: 1;
-    }
-
+    font-size: 3rem;
+    font-family: sans-serif;
+    line-height: 1;
     border: none;
     background: none;
     position: absolute;

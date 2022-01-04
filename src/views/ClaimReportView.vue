@@ -9,19 +9,31 @@
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
-        <ul class="tabs">
-          <li class="tabs__tab"
-              @click.prevent="goToStep(1)"
-              :class="{'tabs__tab--active': step === 1}"
-          >Step 1 - Personal Details</li>
-          <li class="tabs__tab"
-              @click.prevent="goToStep(2)"
-              :class="{'tabs__tab--active': step === 2}"
-          >Step 2 - Incident Details</li>
-          <li class="tabs__tab"
-              @click.prevent="goToStep(3)"
-              :class="{'tabs__tab--active': step === 3}"
-          >Step 3 - Expense Report</li>
+        <ul class="tabs" role="tablist">
+          <li>
+            <button class="tabs__tab"
+                    @click.prevent="goToStep(1)"
+                    :class="{'tabs__tab--active': step === 1}"
+                    role="tab"
+            >Step 1 - Personal Details
+            </button>
+          </li>
+          <li>
+            <button class="tabs__tab"
+                    @click.prevent="goToStep(2)"
+                    :class="{'tabs__tab--active': step === 2}"
+                    role="tab"
+            >Step 2 - Incident Details
+            </button>
+          </li>
+          <li>
+            <button class="tabs__tab"
+                    @click.prevent="goToStep(3)"
+                    :class="{'tabs__tab--active': step === 3}"
+                    role="tab"
+            >Step 3 - Expense Report
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -32,28 +44,28 @@
       <div class="col-md-8">
         <form action="" method="" class="form">
           <p>
-            <label for="" class="form__label">First name</label>
-            <input type="text" class="form__input">
+            <label for="first_name" class="form__label">First name</label>
+            <input type="text" class="form__input" id="first_name">
           </p>
           <p>
-            <label for="" class="form__label">Second name</label>
-            <input type="text" class="form__input">
+            <label for="second_name" class="form__label">Second name</label>
+            <input type="text" class="form__input" id="second_name">
           </p>
           <p>
-            <label for="" class="form__label">Birthday</label>
-            <input type="date" class="form__input">
+            <label for="birthday" class="form__label">Birthday</label>
+            <input type="date" class="form__input" id="birthday">
           </p>
           <p>
-            <label for="" class="form__label">Phone number</label>
-            <input type="tel" class="form__input">
+            <label for="phone_number" class="form__label">Phone number</label>
+            <input type="tel" class="form__input" id="phone_number">
           </p>
           <p>
-            <label for="" class="form__label">Email</label>
-            <input type="email" class="form__input">
+            <label for="email" class="form__label">Email</label>
+            <input type="email" class="form__input" id="email">
           </p>
           <p>
-            <label for="" class="form__label">Policy number</label>
-            <input type="number" class="form__input">
+            <label for="policy_number" class="form__label">Policy number</label>
+            <input type="number" class="form__input" id="policy_number">
           </p>
 
           <div class="row">
@@ -72,36 +84,36 @@
       <div class="col-md-2"></div>
       <div class="col-md-8">
         <form action="" method="" class="form">
-          <p>
-            <label for="" class="form__label">Purpose of travel</label>
+          <fieldset>
+            <legend class="form__label">Purpose of travel</legend>
             <label>
-              <input type="radio" name="purpose_of_travel" value="tourism" /> tourism
-            </label><br>
-            <label>
-              <input type="radio" name="purpose_of_travel" value="study" /> study / mental work
-            </label><br>
-            <label>
-              <input type="radio" name="purpose_of_travel" value="physical" /> physical work
-            </label><br>
-            <label>
-              <input type="radio" name="purpose_of_travel" value="high-risk-sport" /> high-risk sport
+              <input type="radio" name="purpose_of_travel" value="tourism"/> tourism
             </label>
+            <label>
+              <input type="radio" name="purpose_of_travel" value="study"/> study / mental work
+            </label>
+            <label>
+              <input type="radio" name="purpose_of_travel" value="physical"/> physical work
+            </label>
+            <label>
+              <input type="radio" name="purpose_of_travel" value="high-risk-sport"/> high-risk sport
+            </label>
+          </fieldset>
+          <p>
+            <label for="country" class="form__label">Country</label>
+            <input type="text" class="form__input" id="country">
           </p>
           <p>
-            <label for="" class="form__label">Country</label>
-            <input type="text" class="form__input">
+            <label for="address" class="form__label">Address</label>
+            <input type="text" class="form__input" id="address">
           </p>
           <p>
-            <label for="" class="form__label">Address</label>
-            <input type="text" class="form__input">
+            <label for="date" class="form__label">Date</label>
+            <input type="date" class="form__input" id="date">
           </p>
           <p>
-            <label for="" class="form__label">Date</label>
-            <input type="date" class="form__input">
-          </p>
-          <p>
-            <label for="" class="form__label">Incident description</label>
-            <textarea name="" id="" cols="30" rows="10" class="form__textarea"></textarea>
+            <label for="description" class="form__label">Incident description</label>
+            <textarea name="" id="description" cols="30" rows="10" class="form__textarea"></textarea>
           </p>
 
           <div class="row">
@@ -155,7 +167,8 @@
 
             <tr class="table__row">
               <td colspan="3" class="table__actions">
-                <button class="button button--link" @click.prevent="isPopupVisible = true">+ Add another expense</button>
+                <button class="button button--link" @click.prevent="isPopupVisible = true">+ Add another expense
+                </button>
               </td>
             </tr>
           </table>
@@ -172,22 +185,23 @@
       </div>
     </div>
 
-    <div class="popup" v-if="isPopupVisible">
+    <div class="popup" v-if="isPopupVisible" role="dialog" aria-labelledby="popupHeader">
       <div class="container">
         <div class="row">
           <div class="col-md-3"></div>
           <div class="col-md-6 popup__inner">
-            <h3 class="popup__header">Expense</h3>
-            <button class="popup__close" @click.prevent="isPopupVisible=false"></button>
+            <h2 class="popup__header" id="popupHeader">Expense</h2>
+            <button class="popup__close" @click.prevent="isPopupVisible=false" aria-label="Close">X</button>
             <form action="">
               <p>
-                <label for="" class="form__label">Name</label>
-                <input type="text" name="name" class="form__input">
+                <label for="expense_name" class="form__label">Name</label>
+                <input type="text" name="name" class="form__input" id="expense_name">
               </p>
 
               <p class="mb-4">
-                <label for="" class="form__label">Price</label>
-                <input type="number" name="price" min="0.00" max="10000.00" step="0.01" class="form__input" />
+                <label for="expense_price" class="form__label">Price</label>
+                <input type="number" name="price" min="0.00" max="10000.00" step="0.01" class="form__input"
+                       id="expense_price"/>
               </p>
 
               <div class="popup__actions">
@@ -215,7 +229,7 @@
       const router = useRouter();
       document.title = router.currentRoute.value.meta.title;
 
-      const step = ref(3);
+      const step = ref(1);
       const isPopupVisible = ref(false);
       const goToStep = s => step.value = s;
 

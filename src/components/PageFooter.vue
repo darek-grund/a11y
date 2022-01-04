@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-md-2">
-          <h3 class="title">About Us</h3>
+          <h2 class="title">About Us</h2>
           <ul>
             <li>
               <router-link to="/newsroom" class="footer__link">Newsroom</router-link>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="col-md-2">
-          <h3 class="title">Products</h3>
+          <h2 class="title">Products</h2>
           <ul>
             <li>
               <router-link to="/vacation-holiday" class="footer__link">Vacation / Holiday</router-link>
@@ -40,7 +40,7 @@
         </div>
 
         <div class="col-md-2">
-          <h3 class="title">Members</h3>
+          <h2 class="title">Members</h2>
           <ul>
             <li>
               <router-link to="/forms-library" class="footer__link">Forms Library</router-link>
