@@ -43,34 +43,61 @@
       <div class="col-md-2"></div>
       <div class="col-md-8">
         <form action="" method="" class="form">
+          {{ form }}
           <p>
-            <label for="first_name" class="form__label">First name</label>
-            <input type="text" class="form__input" id="first_name">
+            <label for="first_name" class="form__label">First name <span class="form_required">(required)</span></label>
+            <input type="text" class="form__input" id="first_name"
+                   required
+                   v-model="form.step1.first_name.input"
+                   @blur="validateField(form.step1, 'first_name')"
+            >
+            <form-error-message :message="form.step1.first_name.error" :isFirstError="form.step1.first_name.isFirstError"></form-error-message>
           </p>
           <p>
-            <label for="second_name" class="form__label">Second name</label>
-            <input type="text" class="form__input" id="second_name">
+            <label for="second_name" class="form__label">Second name <span class="form_required">(required)</span></label>
+            <input type="text" class="form__input" id="second_name"
+                   required
+                   v-model="form.step1.second_name.input"
+                   @blur="validateField(form.step1, 'second_name')"
+            >
+            <form-error-message :message="form.step1.second_name.error" :isFirstError="form.step1.second_name.isFirstError"></form-error-message>
           </p>
           <p>
             <label for="birthday" class="form__label">Birthday</label>
-            <input type="date" class="form__input" id="birthday">
+            <input type="date" class="form__input" id="birthday"
+                   v-model="form.step1.birthday.input"
+                   @blur="validateField(form.step1, 'birthday')"
+            >
+            <form-error-message :message="form.step1.birthday.error" :isFirstError="form.step1.birthday.isFirstError"></form-error-message>
           </p>
           <p>
             <label for="phone_number" class="form__label">Phone number</label>
-            <input type="tel" class="form__input" id="phone_number">
+            <input type="tel" class="form__input" id="phone_number"
+                   v-model="form.step1.phone_number.input"
+                   @blur="validateField(form.step1, 'phone_number')"
+            >
+            <form-error-message :message="form.step1.phone_number.error" :isFirstError="form.step1.phone_number.isFirstError"></form-error-message>
           </p>
           <p>
             <label for="email" class="form__label">Email</label>
-            <input type="email" class="form__input" id="email">
+            <input type="email" class="form__input" id="email"
+                   v-model="form.step1.email.input"
+                   @blur="validateField(form.step1, 'email')"
+            >
+            <form-error-message :message="form.step1.email.error" :isFirstError="form.step1.email.isFirstError"></form-error-message>
           </p>
           <p>
             <label for="policy_number" class="form__label">Policy number</label>
-            <input type="number" class="form__input" id="policy_number">
+            <input type="number" class="form__input" id="policy_number"
+                   v-model="form.step1.policy_number.input"
+                   @blur="validateField(form.step1, 'policy_number')"
+            >
+            <form-error-message :message="form.step1.policy_number.error" :isFirstError="form.step1.policy_number.isFirstError"></form-error-message>
           </p>
 
           <div class="row">
             <div class="col-md-12 text-right">
-              <button class="button button--primary" @click.prevent="goToStep(2)">Continue</button>
+              <input type="submit" class="button button--primary" @click.prevent="goToStep(2)" value="Continue">
             </div>
           </div>
 
@@ -217,12 +244,13 @@
 </template>
 
 <script>
-  import { defineComponent, ref } from 'vue';
+  import { defineComponent, ref, reactive, onMounted } from 'vue';
   import { useRouter } from 'vue-router'
+  import FormErrorMessage from '@/components/FormErrorMessage';
 
   export default defineComponent({
     name: 'ClaimReportView',
-    components: {},
+    components: { FormErrorMessage },
     props: {},
 
     setup(props) {
@@ -231,12 +259,86 @@
 
       const step = ref(1);
       const isPopupVisible = ref(false);
-      const goToStep = s => step.value = s;
+
+      const form = reactive({
+        step1: {
+          first_name: {
+            input: '',
+            validate: v => v ? '' : 'Field is required',
+          },
+          second_name: {
+            input: '',
+            validate: v => v  ? '' : 'Field is required',
+          },
+          birthday: {
+            input: '',
+            validate: v => v  ? '' : 'Must be valid date',
+          },
+          phone_number: {
+            input: '',
+            validate: v => !v || +v > 0 === ''  ? '' : 'Must be valid phone number',
+          },
+          email: {
+            input: '',
+            validate: v => !v ? '' : 'Must be valid email',
+          },
+          policy_number: {
+            input: '',
+            validate: v => !v || +v > 0 ? '' : 'Must be valid policy number',
+          },
+        }
+      });
+
+      const validateField = (step, fieldName) => {
+        const field = step[fieldName];
+        field.error = field.validate(field.input);
+        setFirstError(step);
+      };
+
+      const validateStep = (targetStep) => {
+        let step;
+        switch(targetStep) {
+          case 1:
+            step = form.step1;
+            break;
+        }
+
+        Object.keys(step).map((key) => {
+          validateField(step, key);
+        });
+      };
+
+      const setFirstError = (step) => {
+        let isFirstError = true;
+        Object.keys(step).map((key) => {
+          if (isFirstError && step[key].error) {
+            step[key].isFirstError = true;
+            isFirstError = false;
+          } else {
+            step[key].isFirstError = false;
+          }
+        });
+      };
+
+      const goToStep = (targetStep) => {
+        switch(targetStep) {
+          case 2:
+            validateStep(1);
+            break;
+        }
+
+        return false;
+        step.value = s;
+      };
+
+      onMounted(() => goToStep(2));
 
       return {
         step,
         goToStep,
         isPopupVisible,
+        form,
+        validateField,
       }
     },
   });
