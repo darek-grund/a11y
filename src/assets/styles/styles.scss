@@ -218,6 +218,7 @@ ul {
     position: absolute;
     top: 2rem;
     right: 2rem;
+    cursor: pointer;
   }
 }
 
@@ -226,4 +227,11 @@ ul {
   color: $error;
   margin: 1rem 0;
   font-size: 1.6rem;
+}
+
+.screenreader-only {
+  position: absolute;
+  top: 0;
+  left: -9999px;
+  transform: translateX(-100%);
 }

@@ -209,7 +209,9 @@
 
             <tr class="table__row">
               <td colspan="3" class="table__actions">
-                <button class="button button--link" @click.prevent="isPopupVisible = true">+ Add another expense
+                <button class="button button--link" @click.prevent="displayPopup(true)"
+                        ref="modalBlur"
+                        aria-label="Add another expense will open modal window">+ Add another expense
                 </button>
               </td>
             </tr>
@@ -219,7 +221,7 @@
           <div class="row">
             <div class="col-md-12 justify-space-between">
               <button class="button button--secondary" @click.prevent="goToStep(2)">Return</button>
-              <button class="button button--primary" @click.prevent="goToStep(4)">Submit</button>
+              <input type="submit" class="button button--primary" @click.prevent="goToStep(4)" value="Submit">
             </div>
           </div>
 
@@ -227,39 +229,50 @@
       </div>
     </div>
 
-    <div class="popup" v-if="isPopupVisible" role="dialog" aria-labelledby="popupHeader">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-3"></div>
-          <div class="col-md-6 popup__inner">
-            <h2 class="popup__header" id="popupHeader">Expense</h2>
-            <button class="popup__close" @click.prevent="isPopupVisible=false" aria-label="Close">X</button>
-            <form action="">
-              <p>
-                <label for="expense_name" class="form__label">Name</label>
-                <input type="text" name="name" class="form__input" id="expense_name">
-              </p>
-
-              <p class="mb-4">
-                <label for="expense_price" class="form__label">Price</label>
-                <input type="number" name="price" min="0.00" max="10000.00" step="0.01" class="form__input"
-                       id="expense_price"/>
-              </p>
-
-              <div class="popup__actions">
-                <button class="button button--secondary" @click.prevent="isPopupVisible=false">Cancel</button>
-                <button class="button button--primary ml-2" @click.prevent="isPopupVisible=false">Add</button>
+    <teleport to="body">
+      <div class="popup" v-if="isModalVisible"
+           role="dialog"
+           aria-labelledby="popupHeader"
+           aria-describedby="popupDescription"
+           :aria-hidden="!isModalVisible"
+           @keyup.esc="displayPopup(false)">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 popup__inner">
+              <div id="popupDescription" class="screenreader-only">
+                This is modal window titled "Expense adding form". It will allow to add new expense. Pressing the Close modal button or submitting new expense will close the modal and bring you where you were on the page.
               </div>
-            </form>
+              <button class="popup__close" @click.prevent="displayPopup(false)" aria-label="Close modal">X</button>
+              <h2 class="popup__header" id="popupHeader" aria-label="Expense adding form">Expense</h2>
+              <form action="">
+                <p>
+                  <label for="expense_name" class="form__label">Name</label>
+                  <input type="text" name="name" class="form__input" id="expense_name" ref="modalFocus">
+                </p>
+
+                <p class="mb-4">
+                  <label for="expense_price" class="form__label">Price</label>
+                  <input type="number" name="price" min="0.00" max="10000.00" step="0.01" class="form__input"
+                         id="expense_price"/>
+                </p>
+
+                <div class="popup__actions">
+                  <button class="button button--secondary" @click.prevent="displayPopup(false)" aria-label="Cancel and close the modal">Cancel</button>
+                  <button class="button button--primary ml-2" @click.prevent="displayPopup(false)" aria-label="Add new expense and close modal">Add</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </teleport>
+
   </div>
 </template>
 
 <script>
-  import { defineComponent, ref, reactive, onMounted } from 'vue';
+  import { defineComponent, ref, reactive, onMounted, computed, nextTick } from 'vue';
   import { useRouter } from 'vue-router'
   import FormErrorMessage from '@/components/FormErrorMessage';
 
@@ -273,8 +286,6 @@
       document.title = router.currentRoute.value.meta.title;
 
       const step = ref(1);
-      const isPopupVisible = ref(false);
-
       const form = reactive({
         step1: {
           first_name: {
@@ -322,7 +333,6 @@
         },
         step3: {},
       });
-
       const tabDisabled = reactive({
         step1: false,
         step2: true,
@@ -399,15 +409,39 @@
         }
       };
 
-      step.value = 3;
+      step.value = 1;
+
+      const showModal = ref(false);
+      const modalFocus = ref(null);
+      const modalBlur = ref(null);
+
+      const isModalVisible = computed(() => {
+        document.getElementById('app').setAttribute('aria-hidden', showModal.value);
+
+
+        return showModal.value;
+      });
+
+      const displayPopup = (isVisible) => {
+        showModal.value = isVisible;
+
+        if (showModal.value) {
+          nextTick(() => modalFocus.value.focus());
+        } else {
+          modalBlur.value && modalBlur.value.focus();
+        }
+      };
 
       return {
         step,
         goToStep,
-        isPopupVisible,
         form,
         validateField,
         tabDisabled,
+        isModalVisible,
+        displayPopup,
+        modalFocus,
+        modalBlur,
       }
     },
   });
