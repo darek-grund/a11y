@@ -9,12 +9,14 @@
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
+        {{ tabDisabled }}
         <ul class="tabs" role="tablist">
           <li>
             <button class="tabs__tab"
                     @click.prevent="goToStep(1)"
                     :class="{'tabs__tab--active': step === 1}"
                     role="tab"
+                    :disabled="tabDisabled.step1"
             >Step 1 - Personal Details
             </button>
           </li>
@@ -23,6 +25,7 @@
                     @click.prevent="goToStep(2)"
                     :class="{'tabs__tab--active': step === 2}"
                     role="tab"
+                    :disabled="tabDisabled.step2"
             >Step 2 - Incident Details
             </button>
           </li>
@@ -31,6 +34,7 @@
                     @click.prevent="goToStep(3)"
                     :class="{'tabs__tab--active': step === 3}"
                     role="tab"
+                    :disabled="tabDisabled.step3"
             >Step 3 - Expense Report
             </button>
           </li>
@@ -127,25 +131,38 @@
           </fieldset>
           <p>
             <label for="country" class="form__label">Country</label>
-            <input type="text" class="form__input" id="country">
+            <input type="text" class="form__input" id="country"
+                   v-model="form.step2.country.input"
+                   @blur="validateField(form.step2, 'country')"
+            >
+            <form-error-message :message="form.step2.country.error" :isFirstError="form.step2.country.isFirstError"></form-error-message>
           </p>
           <p>
             <label for="address" class="form__label">Address</label>
-            <input type="text" class="form__input" id="address">
+            <input type="text" class="form__input" id="address"
+                   v-model="form.step2.address.input"
+                   @blur="validateField(form.step2, 'address')">
+            <form-error-message :message="form.step2.address.error" :isFirstError="form.step2.address.isFirstError"></form-error-message>
           </p>
           <p>
             <label for="date" class="form__label">Date</label>
-            <input type="date" class="form__input" id="date">
+            <input type="date" class="form__input" id="date"
+                   v-model="form.step2.date.input"
+                   @blur="validateField(form.step2, 'date')">
+            <form-error-message :message="form.step2.date.error" :isFirstError="form.step2.date.isFirstError"></form-error-message>
           </p>
           <p>
             <label for="description" class="form__label">Incident description</label>
-            <textarea name="" id="description" cols="30" rows="10" class="form__textarea"></textarea>
+            <textarea name="" id="description" cols="30" rows="10" class="form__textarea"
+                      v-model="form.step2.description.input"
+                      @blur="validateField(form.step2, 'description')"></textarea>
+            <form-error-message :message="form.step2.description.error" :isFirstError="form.step2.description.isFirstError"></form-error-message>
           </p>
 
           <div class="row">
             <div class="col-md-12 justify-space-between">
               <button class="button button--secondary" @click.prevent="goToStep(1)">Return</button>
-              <button class="button button--primary" @click.prevent="goToStep(3)">Continue</button>
+              <input type="submit" class="button button--primary" @click.prevent="goToStep(3)" value="Continue">
             </div>
           </div>
 
@@ -285,7 +302,32 @@
             input: '',
             validate: v => !v || +v > 0 ? '' : 'Must be valid policy number',
           },
-        }
+        },
+        step2: {
+          country: {
+            input: '',
+            validate: v => !v ? '' : 'This field should be clear to pass validation',
+          },
+          address: {
+            input: '',
+            validate: v => !v ? '' : 'This field should be clear to pass validation',
+          },
+          date: {
+            input: '',
+            validate: v => !v ? '' : 'This field should be clear to pass validation',
+          },
+          description: {
+            input: '',
+            validate: v => !v ? '' : 'This field should be clear to pass validation',
+          },
+        },
+        step3: {},
+      });
+
+      const tabDisabled = reactive({
+        step1: false,
+        step2: true,
+        step3: true,
       });
 
       const validateField = (step, fieldName) => {
@@ -300,6 +342,12 @@
         switch(targetStep) {
           case 1:
             step = form.step1;
+            break;
+          case 2:
+            step = form.step2;
+            break;
+          case 3:
+            step = form.step3;
             break;
         }
 
@@ -320,19 +368,37 @@
       };
 
       const goToStep = (targetStep) => {
+        console.log('gotoStep', targetStep);
         let isValid;
         switch(targetStep) {
+          case 1:
+            isValid = true;
+            break;
           case 2:
+            tabDisabled.step2 = false;
             isValid = validateStep(1);
+            break;
+          case 3:
+            tabDisabled.step3 = false;
+            isValid = validateStep(2);
+            break;
+          case 4:
+            isValid = validateStep(3);
             break;
         }
 
         if (isValid) {
           step.value = targetStep;
         }
-      };
 
-      //onMounted(() => goToStep(2));
+        if(step.value === 4) {
+          // add toast here
+          tabDisabled.step1 = false;
+          tabDisabled.step2 = true;
+          tabDisabled.step3 = true;
+          step.value = 1;
+        }
+      };
 
       return {
         step,
@@ -340,6 +406,7 @@
         isPopupVisible,
         form,
         validateField,
+        tabDisabled,
       }
     },
   });
