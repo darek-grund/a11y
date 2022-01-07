@@ -43,7 +43,6 @@
       <div class="col-md-2"></div>
       <div class="col-md-8">
         <form action="" method="" class="form">
-          {{ form }}
           <p>
             <label for="first_name" class="form__label">First name <span class="form_required">(required)</span></label>
             <input type="text" class="form__input" id="first_name"
@@ -263,15 +262,15 @@
       const form = reactive({
         step1: {
           first_name: {
-            input: '',
+            input: 'fname',
             validate: v => v ? '' : 'Field is required',
           },
           second_name: {
-            input: '',
+            input: 'lname',
             validate: v => v  ? '' : 'Field is required',
           },
           birthday: {
-            input: '',
+            input: '2020-01-01',
             validate: v => v  ? '' : 'Must be valid date',
           },
           phone_number: {
@@ -293,6 +292,7 @@
         const field = step[fieldName];
         field.error = field.validate(field.input);
         setFirstError(step);
+        return field.error;
       };
 
       const validateStep = (targetStep) => {
@@ -303,9 +303,8 @@
             break;
         }
 
-        Object.keys(step).map((key) => {
-          validateField(step, key);
-        });
+        const errors = Object.keys(step).map((key) => validateField(step, key));
+        return errors.every(val => val === '');
       };
 
       const setFirstError = (step) => {
@@ -321,17 +320,19 @@
       };
 
       const goToStep = (targetStep) => {
+        let isValid;
         switch(targetStep) {
           case 2:
-            validateStep(1);
+            isValid = validateStep(1);
             break;
         }
 
-        return false;
-        step.value = s;
+        if (isValid) {
+          step.value = targetStep;
+        }
       };
 
-      onMounted(() => goToStep(2));
+      //onMounted(() => goToStep(2));
 
       return {
         step,
