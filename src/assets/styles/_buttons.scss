@@ -27,4 +27,24 @@
     font-weight: 700;
     padding: 0;
   }
+
+  &--icon {
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    padding: 0;
+    border: none;
+    background-color: $gray2;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 50%;
+  }
+
+  &--delete {
+    background-image: url('../images/trash-fill.svg');
+  }
+
+  &--edit {
+    background-image: url('../images/pencil-fill.svg');
+  }
 }

@@ -9,7 +9,6 @@
     <div class="row">
       <div class="col-md-1"></div>
       <div class="col-md-10">
-        {{ tabDisabled }}
         <ul class="tabs" role="tablist">
           <li>
             <button class="tabs__tab"
@@ -185,17 +184,17 @@
               <td class="table__price">&euro; 35</td>
               <td class="table__description">very expensive item</td>
               <td class="table__actions">
-                <button>DEL</button>
-                <button>EDIT</button>
+                <button class="button button--icon button--delete" aria-label="Delete expense"></button>
+                <button class="button button--icon button--edit ml-2" aria-label="Edit expense"></button>
               </td>
             </tr>
 
             <tr class="table__row">
               <td class="table__price">&euro; 325</td>
-              <td class="table__description">not so much expensive item</td>
+              <td class="table__description">not so much- expensive item</td>
               <td class="table__actions">
-                <button>DEL</button>
-                <button>EDIT</button>
+                <button class="button button--icon button--delete" aria-label="Delete expense"></button>
+                <button class="button button--icon button--edit ml-2" aria-label="Edit expense"></button>
               </td>
             </tr>
 
@@ -203,8 +202,8 @@
               <td class="table__price">&euro; 335</td>
               <td class="table__description">cheap item</td>
               <td class="table__actions">
-                <button>DEL</button>
-                <button>EDIT</button>
+                <button class="button button--icon button--delete" aria-label="Delete expense"></button>
+                <button class="button button--icon button--edit ml-2" aria-label="Edit expense"></button>
               </td>
             </tr>
 
@@ -399,6 +398,8 @@
           step.value = 1;
         }
       };
+
+      step.value = 3;
 
       return {
         step,
