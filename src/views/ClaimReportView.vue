@@ -386,12 +386,16 @@
             isValid = true;
             break;
           case 2:
-            tabDisabled.step2 = false;
             isValid = validateStep(1);
+            if (isValid) {
+              tabDisabled.step2 = false;
+            }
             break;
           case 3:
-            tabDisabled.step3 = false;
             isValid = validateStep(2);
+            if (isValid) {
+              tabDisabled.step3 = false;
+            }
             break;
           case 4:
             isValid = validateStep(3);
@@ -446,7 +450,3 @@
     },
   });
 </script>
-
-<style scoped lang="scss">
-
-</style>
