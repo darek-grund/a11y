@@ -2,8 +2,8 @@
   <div class="container--fluid">
     <div class="slide">
       <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6 text-center">
+        <div class="col-xs-12 col-md-3"></div>
+        <div class="col-xs-12 col-md-6 text-center">
           <h1>Travel Insurance</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias cumque doloremque doloribus enim error nam, nisi perspiciatis reprehenderit sit suscipit!</p>
           <router-link to="/claim-report" class="button button--primary">Order now</router-link>

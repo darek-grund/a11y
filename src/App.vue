@@ -1,6 +1,10 @@
 <template>
   <header-navigation></header-navigation>
-  <router-view/>
+
+  <main id="main-content">
+    <router-view/>
+  </main>
+
   <page-footer></page-footer>
 </template>
 

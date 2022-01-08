@@ -1,11 +1,13 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-xs-12 col-md-6 col-lg-5 col-xl-5">
         <img src="@/assets/images/internal-visitors.jpg" alt="" />
       </div>
-      <div class="col-md-2"></div>
-      <div class="col-md-5">
+
+      <div class="col-lg-1 col-xl-2"></div>
+
+      <div class="col-xs-12 col-md-6 col-lg-6 col-xl-5">
         <h2>Insurance for International Visitors</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est et facilis fugit laudantium, mollitia nesciunt non quam qui quos unde.</p>
         <ul>
@@ -19,12 +21,14 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-xs-12 col-md-6 col-lg-6 col-xl-5">
         <h2>Safe Travels</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam atque cum, doloribus, eum ex expedita, incidunt neque obcaecati perspiciatis recusandae rem sint vel. At, cupiditate ea error impedit, laborum minima nemo obcaecati omnis pariatur perspiciatis, quaerat quod reprehenderit.</p>
       </div>
-      <div class="col-md-2"></div>
-      <div class="col-md-5">
+
+      <div class="col-lg-1 col-xl-2"></div>
+
+      <div class="col-xs-12 col-md-6 col-lg-5 col-xl-5">
         <img src="@/assets/images/safe-travels.jpg" alt="" />
       </div>
     </div>

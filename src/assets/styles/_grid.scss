@@ -9,9 +9,10 @@
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  flex-grow: 1;
+  padding: 0 1rem;
 
   &--fluid {
     margin: 0 auto;

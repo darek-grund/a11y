@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-12 text-center">
+      <div class="col-xs-12 col-md-12 text-center">
         <h1>Claim Report</h1>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
+      <div class="col-md-2"></div>
+      <div class="col-xs-12 col-md-8 col-lg-12">
         <ul class="tabs" role="tablist">
-          <li>
+          <li class="tabs__item">
             <button class="tabs__tab"
                     @click.prevent="goToStep(1)"
                     :class="{'tabs__tab--active': step === 1}"
@@ -19,7 +19,7 @@
             >Step 1 - Personal Details
             </button>
           </li>
-          <li>
+          <li class="tabs__item">
             <button class="tabs__tab"
                     @click.prevent="goToStep(2)"
                     :class="{'tabs__tab--active': step === 2}"
@@ -28,7 +28,7 @@
             >Step 2 - Incident Details
             </button>
           </li>
-          <li>
+          <li class="tabs__item">
             <button class="tabs__tab"
                     @click.prevent="goToStep(3)"
                     :class="{'tabs__tab--active': step === 3}"
@@ -43,8 +43,8 @@
 
     <!-- Step 1 -->
     <div class="row mb-10" v-if="step === 1">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
+      <div class="col-xs-12 col-md-2"></div>
+      <div class="col-xs-12 col-md-8">
         <form action="" method="" class="form">
           <p>
             <label for="first_name" class="form__label">First name <span class="form_required">(required)</span></label>
@@ -98,7 +98,7 @@
           </p>
 
           <div class="row">
-            <div class="col-md-12 text-right">
+            <div class="col-xs-12 col-md-12 text-right">
               <input type="submit" class="button button--primary" @click.prevent="goToStep(2)" value="Continue">
             </div>
           </div>
@@ -110,8 +110,8 @@
 
     <!-- Step 2 -->
     <div class="row mb-10" v-if="step === 2">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
+      <div class="col-xs-12 col-md-2"></div>
+      <div class="col-xs-12 col-md-8">
         <form action="" method="" class="form">
           <fieldset>
             <legend class="form__label">Purpose of travel</legend>
@@ -159,7 +159,7 @@
           </p>
 
           <div class="row">
-            <div class="col-md-12 justify-space-between">
+            <div class="col-xs-12 col-md-12 justify-space-between">
               <button class="button button--secondary" @click.prevent="goToStep(1)">Return</button>
               <input type="submit" class="button button--primary" @click.prevent="goToStep(3)" value="Continue">
             </div>
@@ -172,8 +172,8 @@
 
     <!-- Step 3 -->
     <div class="row mb-10" v-if="step === 3">
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
+      <div class="col-xs-12 col-md-2"></div>
+      <div class="col-xs-12 col-md-8">
         <form action="" method="" class="form">
           <table class="table mb-2">
             <tr class="table__row">
@@ -219,7 +219,7 @@
 
 
           <div class="row">
-            <div class="col-md-12 justify-space-between">
+            <div class="col-xs-12 col-md-12 justify-space-between">
               <button class="button button--secondary" @click.prevent="goToStep(2)">Return</button>
               <input type="submit" class="button button--primary" @click.prevent="goToStep(4)" value="Submit">
             </div>
@@ -238,8 +238,9 @@
            @keyup.esc="displayPopup(false)">
         <div class="container">
           <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 popup__inner">
+            <div class="col-xs-12 col-md-1 col-lg-2 col-xl-3"></div>
+            <div class="col-xs-12 col-md-10 col-lg-8 col-xl-6">
+              <div class="popup__inner">
               <div id="popupDescription" class="screenreader-only">
                 This is modal window titled "Expense adding form". It will allow to add new expense. Pressing the Close modal button or submitting new expense will close the modal and bring you where you were on the page.
               </div>
@@ -262,6 +263,7 @@
                   <button class="button button--primary ml-2" @click.prevent="displayPopup(false)" aria-label="Add new expense and close modal">Add</button>
                 </div>
               </form>
+            </div>
             </div>
           </div>
         </div>
@@ -289,15 +291,15 @@
       const form = reactive({
         step1: {
           first_name: {
-            input: 'fname',
+            input: '',
             validate: v => v ? '' : 'Field is required',
           },
           second_name: {
-            input: 'lname',
+            input: '',
             validate: v => v  ? '' : 'Field is required',
           },
           birthday: {
-            input: '2020-01-01',
+            input: '',
             validate: v => v  ? '' : 'Must be valid date',
           },
           phone_number: {
@@ -408,8 +410,6 @@
           step.value = 1;
         }
       };
-
-      step.value = 1;
 
       const showModal = ref(false);
       const modalFocus = ref(null);

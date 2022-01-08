@@ -1,15 +1,15 @@
 <template>
-  <footer class="footer container--fluid">
+  <footer class="footer container container--fluid">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-xs-12 col-lg-6">
           <router-link to="/" class="branding">
             The Insurer
             <img src="@/assets/images/logo.jpg" class="logo" alt="The Insurer Home" />
           </router-link>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-xs-12 col-md-4 col-lg-2">
           <h2 class="title">About Us</h2>
           <ul>
             <li>
@@ -27,7 +27,7 @@
           </ul>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-xs-12 col-md-4 col-lg-2">
           <h2 class="title">Products</h2>
           <ul>
             <li>
@@ -39,7 +39,7 @@
           </ul>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-xs-12 col-md-4 col-lg-2">
           <h2 class="title">Members</h2>
           <ul>
             <li>

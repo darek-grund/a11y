@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-xs-12 col-md-12">
         <header class="header">
           <router-link to="/" class="branding">
             The Insurer

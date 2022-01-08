@@ -4,14 +4,14 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-md-12 text-center">
+      <div class="col-xs-12 col-md-12 text-center">
         <h2>Explore Our Travel Topics</h2>
       </div>
 
     </div>
 
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="explore">
           <div class="explore__image">
             <img src="@/assets/images/explore1.jpg" alt="" />
@@ -20,16 +20,16 @@
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="explore">
           <div class="explore__image">
             <img src="@/assets/images/explore2.jpg" alt="" />
           </div>
-          <p class="explore__title">Trends &amp;amp; Predictions</p>
+          <p class="explore__title">Trends &amp; Predictions</p>
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="explore">
           <div class="explore__image">
             <img src="@/assets/images/explore3.jpg" alt="" />
@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="col-md-3">
+      <div class="col-xs-12 col-sm-6 col-md-3">
         <div class="explore">
           <div class="explore__image">
             <img src="@/assets/images/explore4.jpg" alt="" />
@@ -52,7 +52,7 @@
   <div class="container--fluid">
     <div class="slide">
       <div class="row">
-        <div class="col-md-12 text-center">
+        <div class="col-xs-12 col-md-12 text-center">
           <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum debitis, earum ex laborum sed velit!"</p>
           <img src="@/assets/images/duck.jpg" class="avatar" alt="" />
           <p class="description">Donald Duck, CEO of Disney</p>
@@ -63,12 +63,12 @@
 
   <div class="container">
     <div class="row row--align-center">
-      <div class="col-md-6">
+      <div class="col-xs-12 col-lg-6">
         <h3>Are you looking for an insurance?</h3>
         <p>Contact us to order now</p>
       </div>
 
-      <div class="col-md-6 text-right">
+      <div class="col-xs-12 col-lg-6 text-right-lg">
         <a href="tel:123-456-7890" class="button button--secondary">Call Us</a>
         <router-link to="/about-us" class="button button--primary ml-2">Send a Message</router-link>
       </div>

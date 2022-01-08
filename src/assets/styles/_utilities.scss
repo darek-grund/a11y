@@ -26,3 +26,12 @@
   display: flex;
   justify-content: space-between;
 }
+
+@each $modifier , $breakpoint in $map-grid-props {
+  @include create-mq($breakpoint) {
+    .text-right-#{$modifier} {
+      text-align: right;
+    }
+  }
+}
+
