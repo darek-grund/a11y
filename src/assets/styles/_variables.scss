@@ -15,12 +15,3 @@ $map-grid-props: (
   'lg': $grid__bp-lg,
   'xl': $grid__bp-xl
 );
-
-nav {
-  display: none;
-
-  @media screen and (min-width: $grid__bp-md * 1px) {
-    display: block;
-  }
-}
-

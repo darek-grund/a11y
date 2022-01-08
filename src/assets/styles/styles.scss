@@ -8,6 +8,7 @@
 @import 'typography';
 @import 'buttons';
 @import 'table';
+@import 'navigation';
 
 img {
   max-width: 100%;
@@ -48,31 +49,6 @@ ul {
     object-fit: cover;
     border-radius: 50%;
     margin-left: 3rem;
-  }
-}
-
-.nav {
-  display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 1.8rem;
-
-  &__item {
-    margin: 0 0 0 2rem;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  &__link {
-    text-decoration: none;
-    color: $primary;
-
-    &.router-link-active {
-      font-weight: 700;
-    }
   }
 }
 
